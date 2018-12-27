@@ -26,9 +26,15 @@ public class LocalDateTimeTest {
     public static void main(String[] args) {
 
 
-        LocalDateTime localDate = LocalDateTime.now();
+        LocalDateTime localDateMax = LocalDateTime.MAX;
+        System.out.println("localDateMax年的最大取值范围 :\n" + localDateMax);
 
-        System.out.println("localDate获取当前yyyy-mm-dd :\n" + localDate);
+        LocalDateTime localDateMin = LocalDateTime.MIN;
+        System.out.println("localDateMin年的最小取值范围 :\n" + localDateMin);
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        System.out.println("localDate获取当前yyyy-mm-dd :\n" + localDateTime);
 
         LocalDateTime localDateSystem = LocalDateTime.now(ZoneId.systemDefault());
 
@@ -38,17 +44,11 @@ public class LocalDateTimeTest {
 
         System.out.println("获取某个时区的国家当前日期:\n" + localDateChinese);
 
-        LocalDateTime localDateOf = LocalDateTime.of(2018, 12, 05, 11, 12, 12);
-
-        System.out.println("localDateOf获取设置的yyyy-mm-dd:\n" + localDateOf);
-
-        LocalDateTime localDateOfYearDay = LocalDateTime.ofInstant(Instant.now(), ZoneId.of("UTC+8", new HashMap<>(64)));
-
-        System.out.println("localDateOfYearDay获取一年的第352天是哪月哪日的yyyy-mm-dd:\n" + localDateOfYearDay);
-
         Clock clock = Clock.systemDefaultZone();
-        LocalDateTime localDateClock = LocalDateTime.now(clock);
-        System.out.println("localDateClock使用默认时区转换为日期和时间yyyy-mm-dd:\n" + localDateClock);
+
+        LocalDateTime localDateTimeClock = LocalDateTime.now(clock);
+
+        System.out.println("localDate获取当前yyyy-mm-dd :\n" + localDateTimeClock);
 
         LocalDateTime localDateGet = LocalDateTime.now();
 
@@ -58,11 +58,17 @@ public class LocalDateTimeTest {
         System.out.println("localDateGet获取当前年 :\n" + localDateGet.getYear());
         System.out.println("localDateGet获取当前月 :\n" + localDateGet.getMonth());
 
-        LocalDateTime localDateMax = LocalDateTime.MAX;
-        System.out.println("localDateMax年的最大取值范围 :\n" + localDateMax);
 
-        LocalDateTime localDateMin = LocalDateTime.MIN;
-        System.out.println("localDateMin年的最小取值范围 :\n" + localDateMin);
+        LocalDateTime localDateTimeOf = LocalDateTime.of(2018, 12, 05, 11, 12, 12);
+
+        System.out.println("localDateOf获取设置的yyyy-mm-dd:\n" + localDateTimeOf);
+
+        LocalDateTime localDateOfYearDay = LocalDateTime.ofInstant(Instant.now(), ZoneId.of("UTC+8", new HashMap<>(64)));
+
+        System.out.println("localDateOfYearDay获取一年的第352天是哪月哪日的yyyy-mm-dd:\n" + localDateOfYearDay);
+
+        LocalDateTime dateFromBase = LocalDateTime.ofEpochSecond(200, 20, ZoneOffset.UTC);
+        System.out.println("1970年的365天后是:\n" + dateFromBase);
 
         LocalDateTime localDateText = LocalDateTime.parse("2018-12-05T11:22:22");
         System.out.println("localDateText输出字符串日期 :\n" + localDateText);
@@ -73,7 +79,6 @@ public class LocalDateTimeTest {
         LocalDateTime localDateFormatNow = LocalDateTime.from(ZonedDateTime.now());
         System.out.println("当前日期是:\n" + localDateFormatNow);
 
-        LocalDateTime dateFromBase = LocalDateTime.ofEpochSecond(200, 20, ZoneOffset.UTC);
-        System.out.println("1970年的365天后是:\n" + dateFromBase);
+
     }
 }
